@@ -1,0 +1,9 @@
+From VS code IDE:
+
+1. select "Run->Start Debugging"
+Or 
+Click the Drop down Arrow by the "Run" button on the top right corner, then selct "Run Java" will start the WeatherAPP application.
+
+2. Start a browser
+
+3. Type in "localhost:8080", you will see the web page that display the form to allow the user to check the weather by typing in a zip code.
