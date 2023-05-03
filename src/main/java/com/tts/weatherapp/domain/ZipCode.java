@@ -5,7 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//import org.hibernate.annotations.Table;
+import javax.persistence.*;
+
+
 @Entity
+@Table(name = "ZIP_CODE")
 public class ZipCode {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

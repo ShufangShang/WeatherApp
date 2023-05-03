@@ -1,6 +1,6 @@
 package com.tts.weatherapp;
 
-import java.util.List;
+//import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,8 +38,8 @@ public class WeatherService {
         return restTemplate.getForObject(url, Response.class); */
     } 
 
-    public List<ZipCode> GetSearchHistory()
+    /* public List<String> getSearchHistory(MyZipCodeRepository repository)
     {
-        return repository.findFirst10ByOrderByIdDesc();
-    }
+        return repository.findAllByID();
+    }  */
 }
