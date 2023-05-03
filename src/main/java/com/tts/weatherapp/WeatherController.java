@@ -2,6 +2,7 @@ package com.tts.weatherapp;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.hibernate.mapping.Collection;
@@ -64,5 +65,5 @@ public class WeatherController {
        
         model.addAttribute("codes", zipCodes);
         return "index";
-    }
+    }    
 }
