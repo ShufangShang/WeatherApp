@@ -1,8 +1,10 @@
 package com.tts.weatherapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,12 +54,12 @@ public class WeatherController {
         zipCodes.removeAll(zipCodes);
         for (ZipCode code : zipRepository.findAll()) {
             if(code.getZipCode() !="")
-                zipCodes.add(code);
+                zipCodes.add(code);            
 
             if(zipCodes.size() >= 10)
             {
                 break;
-            }
+            }           
         }
        
         model.addAttribute("codes", zipCodes);
