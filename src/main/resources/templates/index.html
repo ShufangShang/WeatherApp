@@ -44,22 +44,23 @@
                         <p><b>Conditions:</b> <span th:text="${data.weather[0].get('description')}"></span>
                     </hr>
                 </div> 
-                
-                <table>
-                    <thead>
-                        <h3>Search History</h3>                     
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>Search Id</th>
-                            <th>Zip Code</th>                      
-                       </tr>
-                        <tr th:each="code:${codes}">
-                            <td th:text="${code.id}">Id</td>
-                            <td th:text="${code.zipCode}">ZipCode</td>
-                        </tr>
-                    </tbody>
-                </table>    
+                <div th:if="${not#lists.isEmpty(codes)}">
+                    <table>
+                        <thead>
+                            <h5>Search History</h5>                     
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Search Id</th>
+                                <th>Zip Code</th>                      
+                           </tr>
+                            <tr th:each="code:${codes}">
+                                <td th:text="${code.id}">Id</td>
+                                <td th:text="${code.zipCode}">ZipCode</td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                </div>                
             </div>
         </div>
     </div>

@@ -30,7 +30,12 @@ public class WeatherController {
 
         zipCodes.removeAll(zipCodes);
         for (ZipCode code : zipRepository.findAll()) {
-            zipCodes.add(code);
+            if(code.getZipCode() !="")
+                zipCodes.add(code);
+            if(zipCodes.size() >= 10)
+            {
+                break;
+            }
         }
        
         model.addAttribute("codes",zipCodes);
@@ -46,7 +51,13 @@ public class WeatherController {
         //zipCodes = zipRepository.findAllByID();
         zipCodes.removeAll(zipCodes);
         for (ZipCode code : zipRepository.findAll()) {
-            zipCodes.add(code);
+            if(code.getZipCode() !="")
+                zipCodes.add(code);
+
+            if(zipCodes.size() >= 10)
+            {
+                break;
+            }
         }
        
         model.addAttribute("codes", zipCodes);
