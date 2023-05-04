@@ -24,7 +24,7 @@ public class WeatherController {
 
     private static List<ZipCode> zipCodes = new ArrayList<>();
 
-    @GetMapping
+    @GetMapping("/")
     public String getIndex(Model model)
     {
     /*  Response response = weatherService.getForecast("43210");
@@ -46,7 +46,7 @@ public class WeatherController {
         return "index";
     }   
 
-    @PostMapping
+    @PostMapping("/")
     public String postIndex(Request request, Model model) {
         Response data = weatherService.getForecast(request.getZipCode());
         model.addAttribute("data", data);
