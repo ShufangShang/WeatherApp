@@ -1,0 +1,54 @@
+Issues with the database on disk:
+
+1. The WeatherApp worked fine with the bonus features implemented when using the in memery database which has the following configuration
+in the application.properties file:
+
+api_key = 4877b1770402fed55f9651db70958825
+spring.h2.console.enabled=true
+spring.h2.console.path=/console
+spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.url=jdbc:h2:file:~/data/searches
+#spring.datasource.url=jdbc:h2:mem:helloworld;DB_CLOSE_DELAY=-1
+spring.jpa.show-sql = true
+#To save db to disk - 
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.url=jdbc:h2:file:C:/TTS/Projects/Springboot/h2explore/testdb;DB_CLOSE_ON_EXIT=FALSE
+#spring.datasource.url=jdbc:h2:file:C:/TTS/Projects/Springboot/h2explore/testdb;DB_CLOSE_DELAY=-1
+
+But when switching to the database in disk, all the sudden the weatherapp application reported so many errors. In order to make the waetherapp to work with the database on disk, we have to use the following configuration:
+
+api_key = 4877b1770402fed55f9651db70958825
+spring.h2.console.enabled=true
+spring.h2.console.path=/console
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.url=jdbc:h2:file:~/data/searches
+spring.datasource.url=jdbc:h2:file:./data/searches
+#spring.datasource.url=jdbc:h2:mem:helloworld;DB_CLOSE_DELAY=-1
+#spring.datasource.username=sa
+#spring.datasource.password= xxxx
+spring.jpa.show-sql = true
+#To save db to disk - 
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.url=jdbc:h2:file:C:/TTS/Projects/Springboot/h2explore/testdb;DB_CLOSE_ON_EXIT=FALSE
+#spring.datasource.url=jdbc:h2:file:C:/TTS/Projects/Springboot/h2explore/testdb;DB_CLOSE_DELAY=-1
+# we have to create the database and the table manually in order to use the database on the disk
+#we will need the following three lines to use the database on disk
+spring.jpa.generate-ddl: true
+spring.jpa.hibernate.ddl-auto: create-drop
+spring.jpa.defer-datasource-initialization=true
+
+ Create a folder "data" under the c:\tts\projects\weatherapp
+
+Then we have to manually create a table called "ZIP_CODE" by running the following query in the H2 database console (type localhost:8080/console to access the H2 database console):
+
+CREATE TABLE ZIP_CODE(ID INT PRIMARY KEY auto_increment, ZIPCODE VARCHAR(255));
+
+spring.datasource.url=jdbc:h2:file:./data/searches
+
+Also Added a @Collum annotaion to the Zipcode.java above the   private String zipCode; line.
+ @Column(name="ZIPCODE")
+ private String zipCode;
+
+With all the above changes made, the weatherapp started working when using the database on disk.
+
+

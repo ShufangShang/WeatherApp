@@ -18,7 +18,7 @@ public interface MyZipCodeRepository  extends CrudRepository<ZipCode, Long> {
     @Query("SELECT DISTINCT p.brand FROM Product p")
     List<String> findDistinctBrands(); */
 
-    /* @Query("SELECT top 10 codes.zipcode FROM ZIP_CODE codes order by ID Desc")
-    List<ZipCode> findTop10ZipcodesOrderByIDDes();
- */
+   /*  @Query("select zipcode from ZIP_CODE order by ID DESC")
+    List<String> getLast10ZipCode(); */
+
 }
